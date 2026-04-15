@@ -1,0 +1,64 @@
+INFORMATION TECHNOLOGY ACT
+
+Section 43 Penalty and compensation for damage to computer system
+If any person without permission of the owner or any other person who is in charge of a computer, computer system or computer network accesses or secures access to such computer network or downloads any data, they are completely liable to pay damages by way of compensation to the person so affected.
+
+Section 43A Compensation for failure to protect data
+Where a body corporate, possessing, dealing or handling any sensitive personal data or information in a computer resource which it owns, controls or operates, is negligent in implementing and maintaining reasonable security practices, leading to wrongful loss or wrongful gain to any person, such body corporate shall be liable to pay damages by way of compensation.
+
+Section 65 Tampering with computer source documents
+Whoever knowingly or intentionally conceals, destroys or alters or intentionally or knowingly causes another to conceal, destroy, or alter any computer source code used for a computer, computer programme, computer system or computer network, when the computer source code is required to be kept or maintained by law, shall be punished with imprisonment up to three years.
+
+Section 66 Computer related offences
+If any person, dishonestly or fraudulently, does any act referred to in section 43, he shall be punishable with imprisonment for a term which may extend to three years or with fine which may extend to five lakh rupees or with both. This acts as the backbone for prosecuting general hacking and unauthorized manipulation.
+
+Section 66B Punishment for dishonestly receiving stolen computer resource
+Whoever dishonestly receives or retains any stolen computer resource or communication device knowing or having reason to believe the same to be stolen computer resource or communication device, shall be punished with imprisonment of either description for a term which may extend to three years or with fine.
+
+Section 66C Punishment for identity theft
+Whoever, fraudulently or dishonestly make use of the electronic signature, password or any other unique identification feature of any other person, shall be punished with imprisonment of either description for a term which may extend to three years and shall also be liable to fine. This is the primary legal tool against impersonation and unauthorized account takeovers.
+
+Section 66D Punishment for cheating by personation by using computer resource
+Whoever, by means for any communication device or computer resource cheats by personating, shall be punished with imprisonment of either description for a term which may extend to three years and shall also be liable to fine. This addresses sophisticated phishing attacks and social engineering ploys executed digitally.
+
+Section 66E Punishment for violation of privacy
+Whoever, intentionally or knowingly captures, publishes or transmits the image of a private area of any person without his or her consent, under circumstances violating the privacy of that person, shall be punished with imprisonment which may extend to three years or with fine not exceeding two lakh rupees.
+
+Section 66F Punishment for cyber terrorism
+Whoever, with intent to threaten the unity, integrity, security or sovereignty of India or to strike terror in the people, denies access to authorised personnel to a computer resource, or attempts to penetrate or access a computer resource without authorisation, commits cyber terrorism, carrying a potential punishment of imprisonment for life.
+
+Section 67 Punishment for publishing obscene material in electronic form
+Whoever publishes or transmits or causes to be published or transmitted in the electronic form, any material which is lascivious or appeals to the prurient interest, shall be punished. On first conviction, this can lead to imprisonment of either description for a term extending to three years and significant fines.
+
+Section 67A Punishment for publishing sexually explicit act in electronic form
+Whoever publishes or transmits or causes to be published or transmitted in the electronic form any material which contains sexually explicit act or conduct shall be punished with imprisonment of either description for a term which may extend to five years, highlighting a stark escalation in punishment from standard obscene materials.
+
+Section 67B Punishment for publishing material depicting children in sexually explicit act
+Whoever publishes or transmits or causes to be published or transmitted material in any electronic form which depicts children engaged in sexually explicit act or conduct; or creates text or digital images, gathers, seeks, or browses such material, faces exceedingly severe punishments to fiercely protect the digital safety of minors.
+
+Section 67C Preservation and retention of information by intermediaries
+Intermediary shall preserve and retain such information as may be specified for such duration and in such manner and format as the Central Government may prescribe. This mandate legally requires telecom providers and internet platforms to securely hold onto user digital trails to assist ongoing cybercrime investigation efforts.
+
+Section 69 Power to issue directions for interception or decrypting information
+Where the Central Government or a State Government is satisfied that it is necessary in the interest of the sovereignty or integrity of India, defense of India, or security of the State, it may securely direct any agency to intercept, monitor or decrypt any information generated, transmitted, received or stored in any computer resource.
+
+Section 69A Power to issue directions for blocking for public access of any information
+Where it is necessary in the interest of sovereignty and integrity of India, defence of India, or security of the State, the Government can directly instruct intermediaries or authorities to block citizen access to specific dangerous web resources, actively preventing the spread of digital sabotage or systemic panic.
+
+Section 71 Penalty for misrepresentation
+Whoever makes any misrepresentation to, or suppresses any material fact from, the Controller or the Certifying Authority for obtaining any licence or electronic signature Certificate, shall be punished with imprisonment for a term which may extend to two years, or with fine which may extend to one lakh rupees, or with both.
+
+Section 72 Penalty for breach of confidentiality and privacy
+Save as otherwise provided in this Act or any other law for the time being in force, if any person who has secured access to any electronic record, book, register, correspondence, information, document or other material without the consent of the person concerned discloses such material to any other person, they face criminal prosecution.
+
+Section 72A Punishment for disclosure of information in breach of lawful contract
+Any person including an intermediary who, while providing services under the terms of lawful contract, has secured access to any material containing personal information about another person, with the intent to cause wrongful loss or wrongful gain, directly discloses that material unconditionally, commits a punishable offence.
+
+Section 73 Penalty for publishing electronic signature Certificate false in certain particulars
+No person shall publish a electronic signature Certificate or otherwise make it available to any other person with the knowledge that the Certifying Authority listed in such certificate has not issued it, or the subscriber listed hasn't accepted it. Violations aim to severely restrict the unchecked proliferation of fraudulent digital security credentials.
+
+Section 74 Publication for fraudulent purpose
+Whoever knowingly creates, publishes or otherwise makes available an Electronic Signature Certificate for any fraudulent or unlawful purpose shall be punished with imprisonment for a term which may extend to two years, or with fine which may extend to one lakh rupees, or with both.
+
+Section 75 Act to apply for offence or contravention committed outside India
+Subject to the provisions of this Act, the provisions of this Act shall apply also to any offence or contravention committed outside India by any person irrespective of his nationality, strictly provided that the act involves a computer, computer system or computer network located deeply within sovereign Indian territory.
