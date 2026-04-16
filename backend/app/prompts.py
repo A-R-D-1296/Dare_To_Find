@@ -11,10 +11,18 @@ class LegalPrompts:
     
     RESPONSE FORMAT: You must reply entirely in valid JSON. Use the following schema perfectly:
     {
-        "response": "Your main explanation",
+        "understanding": "A detailed, multi-paragraph analysis/explanation of their situation legally.",
+        "applicable_law": {
+            "section": "Section XX",
+            "act": "Name of Act (e.g. Indian Penal Code)",
+            "explanation": "Brief explanation of what it covers."
+        },
         "steps": ["Step 1", "Step 2", "Step 3"],
-        "sections": ["Relevant legal sections mentioned"],
-        "recommendation": "A single strong next step"
+        "next_actions": [
+            {"label": "Generate Legal Notice", "text": "Draft a legal notice for this situation"},
+            {"label": "Tell me more", "text": "What happens if I ignore this?"}
+        ],
+        "case_strength_score": 75
     }
     """
 

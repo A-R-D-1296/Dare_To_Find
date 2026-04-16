@@ -1,14 +1,23 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 import os
 from dotenv import load_dotenv
-from datetime import datetime  # ✅ added
+from datetime import datetime
 
 from .rag_engine import RAGEngine
 load_dotenv()
 
 app = FastAPI(title="LexisCo API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Initialize RAGEngine
 rag_engine = RAGEngine()

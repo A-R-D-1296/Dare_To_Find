@@ -1,0 +1,68 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "features": "Features",
+    "contact": "Contact",
+    "login": "Login",
+    "getStarted": "Get Started"
+  },
+  "hero": {
+    "title": "Justice, Explained. Action, Taken.",
+    "subtitle": "India's first AI Legal Assistant that doesn't just explain the law — it walks you to the courtroom door.",
+    "startCase": "Start Your Case →",
+    "watchDemo": "Watch Demo"
+  },
+  "trust": {
+    "coverage": "IPC / BNS Coverage",
+    "languages": "Hindi + English",
+    "guidance": "Step-by-Step Guidance"
+  },
+  "features": {
+    "step1Title": "Step-by-Step Legal Guidance",
+    "step2Title": "FIR & Complaint Generator",
+    "step2Desc": "Generate court-ready documents in 60 seconds",
+    "step3Title": "Anti-Hallucination AI",
+    "step3Desc": "Answers grounded in verified Indian law only"
+  },
+  "auth": {
+    "welcome": "Welcome Back",
+    "subtext": "Continue your legal journey",
+    "email": "Email",
+    "password": "Password",
+    "forgot": "Forgot Password?",
+    "loginBtn": "Login",
+    "or": "or continue with",
+    "noAccount": "Don't have an account? Sign up",
+    "createAccount": "Create Your Account",
+    "fullName": "Full Name",
+    "phone": "Phone Number",
+    "confirmPassword": "Confirm Password",
+    "agreeTerms": "I agree to Terms of Service and Privacy Policy",
+    "signupBtn": "Sign Up",
+    "haveAccount": "Already have an account? Login"
+  },
+  "dashboard": {
+    "newChat": "New Chat",
+    "settings": "Settings",
+    "emptyTitle": "Describe your legal problem.",
+    "emptySubtitle": "I'll guide you to action.",
+    "suggestion1": "My landlord is refusing to return my security deposit",
+    "suggestion2": "I received a defective product and company won't refund",
+    "suggestion3": "Someone is harassing me online",
+    "suggestion4": "My employer hasn't paid my salary for 2 months",
+    "inputPlaceholder": "Describe your legal problem in Hindi or English...",
+    "disclaimer": "LexisCo provides legal guidance, not legal advice. Consult a licensed advocate for court matters."
+  },
+  "chat": {
+    "understanding": "UNDERSTANDING YOUR SITUATION",
+    "applicableLaw": "APPLICABLE LAW",
+    "actionPlan": "STEP-BY-STEP ACTION PLAN",
+    "nextActions": "NEXT ACTIONS",
+    "tellMeMore": "Tell me more",
+    "generateDoc": "Generate Document",
+    "askFollowup": "Ask a follow-up",
+    "simplify": "Simplify",
+    "legalLanguage": "Legal Language"
+  }
+}
