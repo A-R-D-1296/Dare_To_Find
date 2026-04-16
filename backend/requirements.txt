@@ -9,3 +9,4 @@ supabase
 numpy
 sentence-transformers
 pdfplumber
+groq

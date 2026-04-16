@@ -9,11 +9,13 @@ class LegalPrompts:
     4. If the answer is not in the context, say you don't know and suggest consulting a lawyer.
     5. Always structure your response into logical steps.
     
-    RESPONSE FORMAT (JSON-like):
-    - response: Your main explanation
-    - steps: List of 3-5 immediate actions
-    - sections: List of relevant legal sections mentioned
-    - recommendation: A single strong next step (e.g., "Draft a legal notice")
+    RESPONSE FORMAT: You must reply entirely in valid JSON. Use the following schema perfectly:
+    {
+        "response": "Your main explanation",
+        "steps": ["Step 1", "Step 2", "Step 3"],
+        "sections": ["Relevant legal sections mentioned"],
+        "recommendation": "A single strong next step"
+    }
     """
 
     COMPLAINT_GENERATOR_PROMPT = """

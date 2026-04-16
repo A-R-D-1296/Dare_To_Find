@@ -4,9 +4,13 @@ from typing import List, Optional
 import os
 from dotenv import load_dotenv
 
+from .rag_engine import RAGEngine
 load_dotenv()
 
 app = FastAPI(title="LexisCo API")
+
+# Initialize RAGEngine (This will load the model, make sure resources are sufficient)
+rag_engine = RAGEngine()
 
 class ChatMessage(BaseModel):
     role: str
@@ -22,22 +26,27 @@ async def root():
 
 @app.post("/api/chat")
 async def chat_endpoint(request: ChatRequest):
-    # This is a skeleton for the RAG + Gemini integration
-    # Logic will be implemented in the next steps
     try:
-        # Placeholder response
-        return {
-            "response": "Understood. I'm analyzing your situation. Let's break this down into steps.",
-            "steps": [
-                "Understand the core legal issue",
-                "Identify relevant laws (IPC/BNS)",
-                "Prepare documentation",
-                "Take formal action"
-            ],
-            "citations": []
-        }
+        # We assume the last message from user is the query
+        user_messages = [m.content for m in request.messages if m.role == 'user']
+        if not user_messages:
+            raise HTTPException(status_code=400, detail="No user message found")
+        
+        query = user_messages[-1]
+        
+        # 1. Retrieve Context from Supabase
+        context_chunks = rag_engine.retrieve_context(query)
+        
+        # 2. Generate Steps using Gemini
+        result = rag_engine.generate_steps(query, context_chunks)
+        
+        return result
+    except HTTPException as he:
+        raise he  # Let FastAPI handle it and return 400
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        import traceback
+        traceback.print_exc() # Print full stack trace to the terminal
+        raise HTTPException(status_code=500, detail=f"Internal Server Error: {str(e)}")
 
 @app.post("/api/generate-document")
 async def generate_document(data: dict):
