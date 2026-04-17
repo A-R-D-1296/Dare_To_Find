@@ -51,8 +51,7 @@ export const chatAPI = {
 };
 
 export const documentAPI = {
-  generateFIR: (payload) => api.post('/api/generate-fir', payload),
-  generateComplaint: (payload) => api.post('/api/generate-complaint', payload),
+  generateDocument: (payload) => api.post('/api/generate-document', payload),
 };
 
 export const userAPI = {

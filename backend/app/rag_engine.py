@@ -50,7 +50,7 @@ class RAGEngine:
         groq_api_key = os.getenv("GROQ_API_KEY")
         if groq_api_key and Groq:
             self.groq_client = Groq(api_key=groq_api_key)
-            self.groq_model = "llama-3.3-70b-versatile" # Fast and fully free
+            self.groq_model = "llama-3.1-8b-instant" # Fast and fully free
         else:
             logger.warning("GROQ API Key missing or groq not installed. Generation will use placeholders.")
 

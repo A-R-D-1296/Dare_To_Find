@@ -56,16 +56,14 @@ export default function Signup() {
         phone: formData.phone,
         password: formData.password,
         language: formData.language
-      }).catch((err) => {
-        // mock fallback
-        return { data: { token: 'mock-jwt-token-new', user: { name: formData.name, email: formData.email } } };
       });
       
       login(res.data.token, res.data.user);
       toast.success('Welcome to LexisCo!');
       navigate('/dashboard');
     } catch (err) {
-      toast.error('Registration failed. Please try again.');
+      const errorMsg = err.response?.data?.detail || 'Registration failed. Please try again.';
+      toast.error(errorMsg);
     } finally {
       setLoading(false);
     }
