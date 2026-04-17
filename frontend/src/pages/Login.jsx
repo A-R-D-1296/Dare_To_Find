@@ -51,7 +51,7 @@ export default function Login() {
       const { error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
         options: {
-          redirectTo: 'http://localhost:5173/auth/callback'
+          redirectTo: `${window.location.origin}/auth/callback`
         }
       });
       if (error) {

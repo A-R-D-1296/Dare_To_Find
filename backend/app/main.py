@@ -129,7 +129,7 @@ async def google_oauth():
         res = rag_engine.supabase.auth.sign_in_with_oauth({
             "provider": "google",
             "options": {
-                "redirect_to": "http://localhost:5173/auth/callback"
+                "redirect_to": os.getenv("AUTH_REDIRECT_URL", "http://localhost:5173/auth/callback")
             }
         })
         return {"url": res.url}
