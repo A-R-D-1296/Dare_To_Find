@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { jsPDF } from 'jspdf';
-import { FileText, Download, Copy, Share2, ArrowRight, ArrowLeft } from 'lucide-react';
+import { FileText, Download, Copy, Share2, ArrowRight, ArrowLeft, Menu } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { Navbar } from '../components/layout/Navbar';
 import { Sidebar } from '../components/layout/Sidebar';
 import { GlassCard } from '../components/common/GlassCard';
 import { Spinner } from '../components/common/Spinner';
 import { Modal } from '../components/common/Modal';
+import { documentAPI } from '../services/api';
 
 export default function FIRGenerator() {
   const [activeTab, setActiveTab] = useState('fir');
@@ -47,46 +48,25 @@ export default function FIRGenerator() {
 
   const generateDocument = async () => {
     setIsGenerating(true);
-    // Simulate API call for generating the formal drafted output
-    setTimeout(() => {
-      const docType = activeTab === 'fir' ? 'FIRST INFORMATION REPORT' : 'CONSUMER COMPLAINT';
-      const draft = `
-${docType}
---------------------------------------------------
+    try {
+      let docType = 'FIR';
+      if (activeTab === 'complaint') docType = 'COMPLAINT';
+      if (activeTab === 'notice') docType = 'LEGAL NOTICE';
 
-To,
-The Officer In-Charge / District Commission,
-[Jurisdiction Placeholder]
-
-Date: ${new Date().toLocaleDateString()}
-
-Subject: ${activeTab === 'fir' ? 'Information regarding' : 'Complaint regarding'} ${formData.natureOfOffence || 'specified incident'}
-
-Respected Sir/Madam,
-
-I, ${formData.complainantName || '[Name]'}, son/daughter/spouse of ${formData.fatherName || '[Relative Name]'}, residing at ${formData.address || '[Address]'}, bearing contact number ${formData.phone || '[Phone]'}, beg to state the following:
-
-1. That on ${formData.dateOfIncident || '[Date]'} at approximately ${formData.timeOfIncident || '[Time]'}, an incident occurred at ${formData.location || '[Location]'}.
-2. The accused person(s), namely ${formData.accusedName || 'Unknown'}, was/were involved.
-3. Description of Event:
-${formData.description || '[Detailed Description]'}
-
-4. Evidence Available:
-${formData.evidence.length > 0 ? formData.evidence.join(', ') : 'None listed.'}
-
-I request you to kindly register this ${docType.toLowerCase()} and take necessary legal action at the earliest.
-
-Yours faithfully,
-
-(Signature)
-${formData.complainantName || '[Name]'}
-      `.trim();
-
-      setGeneratedDoc(draft);
+      const response = await documentAPI.generateDocument({
+        type: docType,
+        ...formData
+      });
+      
+      setGeneratedDoc(response.data.document);
       setIsGenerating(false);
       setIsModalOpen(true);
       toast.success('Document Generated Successfully');
-    }, 2000);
+    } catch (error) {
+      console.error(error);
+      setIsGenerating(false);
+      toast.error('Failed to generate document');
+    }
   };
 
   const downloadPDF = () => {
@@ -94,9 +74,17 @@ ${formData.complainantName || '[Name]'}
     doc.setFont("helvetica", "normal");
     doc.setFontSize(12);
     
-    // Simple text wrapping for jsPDF
     const splitText = doc.splitTextToSize(generatedDoc, 180);
-    doc.text(splitText, 15, 20);
+    
+    let y = 20;
+    for (let i = 0; i < splitText.length; i++) {
+      if (y > 280) {
+        doc.addPage();
+        y = 20;
+      }
+      doc.text(splitText[i], 15, y);
+      y += 6; 
+    }
     
     doc.save(`LexisCo_${activeTab.toUpperCase()}_Draft.pdf`);
     toast.success('Downloaded as PDF');
@@ -126,21 +114,7 @@ ${formData.complainantName || '[Name]'}
         </header>
 
         <div className="max-w-3xl mx-auto w-full px-4 py-8">
-          {/* Tabs */}
-          <div className="flex bg-[var(--bg-surface)] p-1 rounded-xl mb-8 border border-[var(--border-color)] w-max mx-auto">
-            <button 
-              className={`px-6 py-2 rounded-lg text-sm font-bold transition-colors ${activeTab === 'fir' ? 'bg-[var(--color-brand-accent)] text-black shadow' : 'text-[var(--text-muted)]'}`}
-              onClick={() => { setActiveTab('fir'); setStep(1); }}
-            >
-              Generate FIR
-            </button>
-            <button 
-              className={`px-6 py-2 rounded-lg text-sm font-bold transition-colors ${activeTab === 'complaint' ? 'bg-[var(--color-brand-accent)] text-black shadow' : 'text-[var(--text-muted)]'}`}
-              onClick={() => { setActiveTab('complaint'); setStep(1); }}
-            >
-              Consumer Complaint
-            </button>
-          </div>
+
 
           <GlassCard className="p-0 overflow-hidden">
             {/* Progress Bar */}
@@ -155,7 +129,19 @@ ${formData.complainantName || '[Name]'}
             <div className="p-6 md:p-8">
               {step === 1 && (
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-4">
-                  <h3 className="text-xl font-serif font-bold mb-6">Incident Details</h3>
+                  <div className="mb-6 mb-8">
+                    <label className="block text-sm font-bold mb-2 opacity-90">Select Document Type *</label>
+                    <select
+                      className="w-full px-4 py-3 rounded-lg bg-[var(--bg-base)] border border-[var(--border-color)] focus:border-[var(--color-brand-accent)] outline-none appearance-none font-semibold text-[var(--text-base)] shadow-sm"
+                      value={activeTab}
+                      onChange={e => setActiveTab(e.target.value)}
+                    >
+                      <option value="fir">First Information Report (FIR)</option>
+                      <option value="notice">Legal Notice</option>
+                      <option value="complaint">Consumer Complaint</option>
+                    </select>
+                  </div>
+                  <h3 className="text-xl font-serif font-bold mb-4 pt-4 border-t border-[var(--border-color)]">Incident / Issue Details</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
                       <label className="block text-sm mb-1 opacity-80">Complainant Name *</label>
@@ -195,7 +181,7 @@ ${formData.complainantName || '[Name]'}
                 <div className="space-y-4 animate-in fade-in slide-in-from-right-4">
                   <h3 className="text-xl font-serif font-bold mb-6">Incident Description</h3>
                   <div>
-                    <label className="block text-sm mb-1 opacity-80">Nature of {activeTab === 'fir' ? 'Offence' : 'Issue'} *</label>
+                    <label className="block text-sm mb-1 opacity-80">Nature of {activeTab === 'fir' ? 'Offence' : activeTab === 'notice' ? 'Notice' : 'Issue'} *</label>
                     <select className="w-full px-4 py-2 rounded-lg bg-[var(--bg-base)] border border-[var(--border-color)] focus:border-[var(--color-brand-accent)] outline-none appearance-none" value={formData.natureOfOffence} onChange={e => setFormData({...formData, natureOfOffence: e.target.value})}>
                       <option value="">Select option...</option>
                       <option value="Theft">Theft / Fraud</option>

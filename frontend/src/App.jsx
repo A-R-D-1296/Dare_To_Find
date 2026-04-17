@@ -17,6 +17,7 @@ const History = lazy(() => import('./pages/History'));
 const FIRGenerator = lazy(() => import('./pages/FIRGenerator'));
 const Profile = lazy(() => import('./pages/Profile'));
 const Settings = lazy(() => import('./pages/Settings'));
+const AuthCallback = lazy(() => import('./pages/AuthCallback'));
 
 const LoadingFallback = () => (
   <div className="min-h-screen flex items-center justify-center p-4">
@@ -72,6 +73,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/about" element={<About />} />
+          <Route path="/auth/callback" element={<AuthCallback />} />
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoute />}>
