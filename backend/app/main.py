@@ -9,7 +9,7 @@ from datetime import datetime
 from .rag_engine import RAGEngine
 load_dotenv()
 
-app = FastAPI(title="LexisCo API")
+app = FastAPI(title="LexisCo API") 
 
 app.add_middleware(
     CORSMiddleware,
